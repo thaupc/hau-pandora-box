@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Translator | HN Toolbox</title>
+    <link rel="stylesheet" href="../../toolbox.css">
+    <style>
+        .trans-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: calc(100vh - 140px);
+        }
+
+        .trans-blocks {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .block-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        select {
+            background: transparent;
+            color: var(--text-main);
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            padding-right: 20px;
+            outline: none;
+            appearance: none;
+            /* simple styling */
+        }
+
+        select:hover {
+            color: var(--accent);
+        }
+
+        textarea {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 16px;
+            color: var(--text-main);
+            resize: none;
+            font-size: 16px;
+            line-height: 1.5;
+            outline: none;
+        }
+
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn:hover {
+            color: var(--text-main);
+        }
+
+        .action-btn {
+            font-size: 14px;
+            text-decoration: none;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background-color: var(--card-hover);
+        }
+
+        .translate-btn {
+            margin-top: 10px;
+            align-self: flex-end;
+            padding: 10px 24px;
+            font-size: 16px;
+        }
+
+        .error-banner {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            display: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-bar">
+        <div class="title-group">
+            <a href="../../toolbox.html" class="back-btn"
+                style="padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--card-bg);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg>
+            </a>
+            <h1>Translator</h1>
+        </div>
+        <a href="../../options.html" class="action-btn">API Settings</a>
+    </div>
+
+    <div id="error-banner" class="error-banner"></div>
+
+    <div class="trans-container">
+        <div class="trans-blocks">
+            <div class="block">
+                <div class="block-header">
+                    <!-- Simple limited list for demo, ideally we fetch from API -->
+                    <select id="source-lang">
+                        <option value="auto">Detect Language</option>
+                        <option value="en" selected>English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="zh">Chinese (Simplified)</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ko">Korean</option>
+                        <option value="ru">Russian</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ar">Arabic</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                </div>
+                <textarea id="source-text" placeholder="Enter text to translate..."></textarea>
+            </div>
+
+            <div class="block">
+                <div class="block-header">
+                    <select id="target-lang">
+                        <option value="en">English</option>
+                        <option value="es" selected>Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="zh">Chinese (Simplified)</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ko">Korean</option>
+                        <option value="ru">Russian</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                </div>
+                <textarea id="target-text" readonly placeholder="Translation"></textarea>
+            </div>
+        </div>
+        <button id="translate-btn" class="btn primary translate-btn">Translate</button>
+    </div>
+
+    <script src="translator.js"></script>
+</body>
+
+</html>

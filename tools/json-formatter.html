@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Formatter | HN Toolbox</title>
+    <link rel="stylesheet" href="../../toolbox.css">
+    <style>
+        .json-container {
+            display: flex;
+            gap: 20px;
+            height: calc(100vh - 140px);
+        }
+
+        .panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 10px;
+        }
+
+        .panel-header {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        textarea,
+        pre {
+            flex: 1;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            padding: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            resize: none;
+            overflow: auto;
+            width: 100%;
+            outline: none;
+            line-height: 1.5;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .error-msg {
+            color: var(--danger);
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .header-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+        }
+
+        .back-btn:hover {
+            color: var(--text-main);
+            background-color: var(--card-hover);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-bar">
+        <a href="../../toolbox.html" class="back-btn" title="Back to Toolbox">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5" />
+                <path d="M12 19l-7-7 7-7" />
+            </svg>
+        </a>
+        <h1>JSON Formatter</h1>
+    </div>
+
+    <div class="controls">
+        <button id="format-btn" class="btn primary">Format</button>
+        <button id="minify-btn" class="btn secondary">Minify</button>
+        <span id="msg" class="error-msg"></span>
+    </div>
+
+    <div class="json-container">
+        <div class="panel">
+            <div class="panel-header">Input JSON</div>
+            <textarea id="json-input" placeholder="Paste your raw JSON here..."></textarea>
+        </div>
+        <div class="panel">
+            <div class="panel-header">Output</div>
+            <textarea id="json-output" readonly placeholder="Result will appear here..."></textarea>
+        </div>
+    </div>
+
+    <script src="json-formatter.js"></script>
+</body>
+
+</html>

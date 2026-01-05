@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <a href="toolbox.html" class="toolbox-link" aria-label="Open Toolbox">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+    </a>
+    <div class="greeting">GOOD DAY!</div>
+    <div class="layout">
+        <div class="box time-section">
+            <div class="label">NOW</div>
+            <div id="clock" class="clock-display">00:00:00</div>
+            <div id="date" class="date-display">Monday, Jan 01</div>
+        </div>
+        <div class="box calendar-section">
+            <div class="calendar-header">
+                <div class="label">CALENDAR</div>
+                <div class="controls">
+                    <button id="btn-prev" class="btn">&lt;</button>
+                    <span id="calendar-title" class="calendar-title">January 2025</span>
+                    <button id="btn-next" class="btn">&gt;</button>
+                    <button id="btn-view-switch" class="btn mode-btn">YEAR</button>
+                    <button id="btn-today" class="btn">TODAY</button>
+                </div>
+            </div>
+            <div id="calendar-grid" class="calendar-grid"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
