@@ -1,3 +1,14 @@
+// Check settings
+chrome.storage.sync.get(['simpleTabEnabled'], (result) => {
+    if (result.simpleTabEnabled === false) {
+        chrome.tabs.getCurrent((tab) => {
+            chrome.tabs.update(tab.id, { url: "chrome-search://local-ntp/local-ntp.html" });
+        });
+    } else {
+        document.body.style.opacity = '1';
+    }
+});
+
 function updateTime() {
     const now = new Date();
     const clockEl = document.getElementById('clock');
