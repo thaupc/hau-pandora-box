@@ -89,6 +89,40 @@
                 </div>
             </div>
         </div>
+        <div class="api-section" style="margin-bottom: 24px;">
+            <h2 style="margin-bottom: 16px;">Omnibox Features</h2>
+            <div class="form-group">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <input type="checkbox" id="jira-redirect-toggle" style="margin-top: 3px;">
+                    <div>
+                        <label for="jira-redirect-toggle"
+                            style="font-size: 14px; color: var(--text-main); cursor: pointer;">Enable Redirect</label>
+                        <div class="help-text">Type <code>hn</code> + Tab in the address bar to start.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="jira-settings-group" style="margin-left: 28px;">
+                <label style="display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 12px;">Trigger
+                    Keyword</label>
+                <div
+                    style="background: var(--bg-color); padding: 8px 12px; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 16px; color: var(--text-muted);">
+                    hn
+                </div>
+
+                <label for="jira-subdomain" style="display: block; margin-bottom: 8px;">Jira Subdomain</label>
+                <input type="text" id="jira-subdomain" placeholder="emobi" style="margin-bottom: 12px; width: 100%;">
+
+                <label for="jira-project-key" style="display: block; margin-bottom: 8px;">Project Key</label>
+                <input type="text" id="jira-project-key" placeholder="EM" style="width: 100%;">
+                <div class="help-text" style="margin-top: 8px;">
+                    <p><strong>How to use:</strong></p>
+                    <ul style="padding-left: 16px; margin-top: 4px;">
+                        <li><code>hn 123</code> &rarr; Opens <strong>KEY-123</strong></li>
+                        <li><code>hn PROJ 123</code> &rarr; Opens <strong>PROJ-123</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="api-section">
             <h2 style="margin-bottom: 16px;">Google Translate API</h2>
             <div class="form-group">
