@@ -19,8 +19,7 @@
     },
     "permissions": [
         "storage",
-        "tabs",
-        "alarms"
+        "tabs"
     ],
     "omnibox": {
         "keyword": "hn"
