@@ -18,7 +18,9 @@
         "default_title": "Hau Pandora Box"
     },
     "permissions": [
-        "storage"
+        "storage",
+        "tabs",
+        "alarms"
     ],
     "omnibox": {
         "keyword": "hn"

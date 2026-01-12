@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: '1', name: 'JSON Formatter', url: chrome.runtime.getURL('tools/json-formatter.html'), icon: 'tools' },
         { id: '2', name: 'Character Count', url: chrome.runtime.getURL('tools/char-count.html'), icon: 'type' },
         { id: '3', name: 'Translator', url: chrome.runtime.getURL('tools/translator.html'), icon: 'globe' },
-        { id: '4', name: 'Hex Converter', url: chrome.runtime.getURL('tools/hex-converter.html'), icon: 'hash' }
+        { id: '4', name: 'Hex Converter', url: chrome.runtime.getURL('tools/hex-converter.html'), icon: 'hash' },
+        { id: '5', name: 'Rewards Helper', url: chrome.runtime.getURL('tools/rewards-helper/popup.html'), icon: 'gift' }
     ];
 
     // Load tools
@@ -39,6 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Actually safest is if user has default tools, update 'em.
                 // But let's just append it for this "update".
                 tools.push({ id: '4', name: 'Hex Converter', url: chrome.runtime.getURL('tools/hex-converter.html'), icon: 'hash' });
+            }
+            // Check for Rewards Helper
+            const hasRewards = tools.some(t => t.name === 'Rewards Helper');
+            if (!hasRewards) {
+                tools.push({ id: '5', name: 'Rewards Helper', url: chrome.runtime.getURL('tools/rewards-helper/popup.html'), icon: 'gift' });
+            }
+            if (!hasHex || !hasRewards) {
                 saveTools();
             }
         } else {
@@ -76,6 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     imgOrIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`;
                 } else if (tool.name.includes('Hex')) {
                     imgOrIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>`;
+                } else if (tool.name === 'Rewards Helper') {
+                    // Use the custom icon.svg
+                    const iconUrl = chrome.runtime.getURL('tools/rewards-helper/icon.svg');
+                    imgOrIcon.innerHTML = `<img src="${iconUrl}" style="width: 24px; height: 24px;">`;
                 } else {
                     imgOrIcon.textContent = tool.name.charAt(0);
                 }
